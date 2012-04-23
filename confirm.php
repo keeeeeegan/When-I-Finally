@@ -24,7 +24,7 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 /* If method is set change API call made. Test is called by default. */
 $content = $connection->get('account/verify_credentials');
 
-$local_user = getLocalUser($content->id, $content->name);
+$local_user = getLocalUser($content->id, $content->name, $content->screen_name);
 
 ?>
 
@@ -37,7 +37,7 @@ $local_user = getLocalUser($content->id, $content->name);
 <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/wheniiwill.js"></script>
 
 </head>
 

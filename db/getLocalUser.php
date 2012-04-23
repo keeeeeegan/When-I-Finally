@@ -4,7 +4,7 @@ require_once('connectdb.php');
 
 // retrieve the user from the database, or register them if they have not been
 // added previously
-function getLocalUser($twitter_id, $nicename) {
+function getLocalUser($twitter_id, $nicename, $twitter_name) {
 
 	$result = mysql_query("SELECT * FROM users") or die(mysql_error());
 
@@ -17,7 +17,7 @@ function getLocalUser($twitter_id, $nicename) {
 	}
 
 	if (!in_array($twitter_id, $twitter_ids)) {
-		mysql_query("INSERT INTO users (twitter_id, nicename, registered, last_accessed) VALUES ('" . $twitter_id . "', '" . $nicename . "', '" . time() . "', '" . time() . "')") or die(mysql_error());
+		mysql_query("INSERT INTO users (twitter_id, twitter_name, nicename, registered, last_accessed) VALUES ('" . $twitter_id . "', '" . $nicename . "', '" . $twitter_name . "', '" . time() . "', '" . time() . "')") or die(mysql_error());
 		$registered = time();
 	}
 	else {
@@ -29,6 +29,7 @@ function getLocalUser($twitter_id, $nicename) {
 
 	return array(
 		"nicename" => $nicename,
+		"screenname" => $twitter_name,
 		"registered" => date("F j, Y, g:i a", $registered),
 		"last-login" => date("F j, Y, g:i a", time()),
 	);

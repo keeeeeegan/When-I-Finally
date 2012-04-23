@@ -17,7 +17,7 @@ if (isset($_SESSION) && isset($_SESSION["status"]) && $_SESSION["status"] == "ve
 <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/wheniiwill.js"></script>
 
 </head>
 
