@@ -68,8 +68,8 @@ body {
 	border-color: #334d5f;	
 }
 
-.content.loading {
-	background: url('../img/ajax-loader.gif') center center no-repeat;
+.loading {
+	background: url('../img/loader.gif') center center no-repeat;
 }
 
 hgroup{
@@ -105,6 +105,10 @@ h3 {
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .70);
 }
 
+.twitter_avatar {
+	
+}
+
 .description {
 	width: 650px;
 	margin-left: 100px;
@@ -121,6 +125,11 @@ h3 {
 	padding: 50px 0 0 100px;
 }
 
+.my_milestones {
+	display:block;
+	min-height: 200px;
+}
+
 a:link, a:visited, a:active, a:hover {
 	color: #fff;
 	font-weight: 100;
@@ -129,15 +138,12 @@ a:link, a:visited, a:active, a:hover {
 	color: #ff8fb1;
 }
 
-a.twitter_button {
+a.button {
 	background: #00bffe;
-	width: 350px;
 	display: block;
 	box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.55);
 	color: #fff;
-	font-size: 30px;
-	text-shadow: 0 -2px 0 rgba(0, 0, 0, .30);
-	padding: 30px 20px;
+	width: 200px;
 	text-align:center;
 	text-decoration:none;
 	font-weight: bold;
@@ -145,18 +151,31 @@ a.twitter_button {
 	border-right: solid 1px rgba(255, 255, 255, 0.20);
 	border-top: solid 1px rgba(255, 255, 255, 0.10);
 	border-left: solid 1px rgba(255, 255, 255, 0.10);
-	line-height: 30px;
+	
+	font-size: 15px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .30);
+	padding: 15px 10px;	
+	line-height: 15px;
 }
 
-a.twitter_button:hover {
+a.button:hover {
 	border-color: #80ff3a;
 	color: #fff;
 	text-decoration:none;
 }
 
-a.twitter_button.signedin {
+a.button.signedin {
 	background: #80ff3a;
 	box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.75);
+}
+
+.twitter_button {
+	background: #00bffe;
+	font-size: 30px;
+	text-shadow: 0 -2px 0 rgba(0, 0, 0, .30);
+	padding: 30px 20px;	
+	line-height: 30px;
+	width: 350px;
 }
 
 nav {

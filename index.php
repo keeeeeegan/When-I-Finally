@@ -41,7 +41,7 @@ if (isset($_SESSION) && isset($_SESSION["status"]) && $_SESSION["status"] == "ve
 </div>
 
 <div class="sign_in">
-	<a href="twitteroauth/redirect.php" class="twitter_button">Sign in using your Twitter account</a>
+	<a href="twitteroauth/redirect.php" class="button twitter_button">Sign in using your Twitter account</a>
 </div>
 
 <footer>
