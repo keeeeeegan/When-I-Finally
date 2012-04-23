@@ -5,4 +5,5 @@ Thumbs.db
 *.zip
 *.rar
 *.
-connectDB.php
+db/connectdb.php
+twitteroauth/config.php

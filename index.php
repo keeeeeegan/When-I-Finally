@@ -1,4 +1,3 @@
-
 <!DOCTYPE html> 
 <html dir="ltr" lang="en-US">
  
@@ -12,7 +11,7 @@
 
 </head>
 
-<body>
+<body class="splash">
 
 <hgroup>
 	<h1>When I, I Will...</h1>
@@ -32,13 +31,11 @@
 </div>
 
 <div class="sign_in">
-
-	<a href=".php" class="twitter_button">Sign in using your Twitter account</a>
-
+	<a href="twitteroauth/redirect.php" class="twitter_button">Sign in using your Twitter account</a>
 </div>
 
 <footer>
-	<p>Copyright &copy; 2012 &ndash; <a href="#">ROBOSHARK</a></p>
+	<p>Copyright &copy; 2012 &ndash; <a href="#">keeg.me</a></p>
 </footer>
 
 </body>
