@@ -1,0 +1,8 @@
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+*.zip
+*.rar
+*.
+connectDB.php
