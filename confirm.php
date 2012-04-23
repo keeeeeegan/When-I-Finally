@@ -45,7 +45,8 @@ $local_user = getLocalUser($content->id, $content->name);
 
 <nav>
 	<ul>
-		<li>Signed in as <?php echo $local_user["nicename"]; ?> (registered since <?php echo $local_user["registered"]; ?>)</li>
+		<li class="signed_in_as">Signed in as <a href="./profile.php"><?php echo $local_user["nicename"]; ?></a></li>
+		<li><a href="./logout.php">Logout</a></li>
 	</ul>
 </nav>
 

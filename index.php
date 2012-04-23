@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION) && isset($_SESSION["status"]) && $_SESSION["status"] == "verified") {
+	// if already logged in, go to confirm page.
+	header('Location: ./confirm.php');
+}
+
+?>
+
 <!DOCTYPE html> 
 <html dir="ltr" lang="en-US">
  

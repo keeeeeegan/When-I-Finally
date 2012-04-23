@@ -25,29 +25,32 @@ body {
 
 h1 {
 	font-family: OstrichSans;
+	font-size: 50px;
+	line-height: 75px;
+	margin: 5px 0 0px 0;
+	font-weight: 100;
+}
+
+.splash h1 {
+	font-family: OstrichSans;
 	
 	font-size: 100px;
 	line-height: 125px;
 	margin: 5% 0 10px 0;
 	font-weight: 100;
 }
-	h1 span {
-		color: #455c0f;
-		display: block;
-	}
-
-	h1 strong {
-		color: #455c0f;
-	}	
 
 h2 {
-	font-family: OstrichSans;
-	
-	
-	/*text-shadow: 3px 3px 5px #000000;*/
+	font-family: OstrichSans;	
+	font-size: 30px;
+	margin: 0 0 20px 0;
+	font-weight: 100;
+	font-style: italic;
+}
 
+.splash h2 {
+	font-family: OstrichSans;	
 	font-size: 45px;
-	
 	margin: 0 0 20px 0;
 	font-weight: 100;
 	font-style: italic;
@@ -65,40 +68,14 @@ body {
 	border-color: #334d5f;	
 }
 
-/*
-.me_icon {
-	display:block;
-	width: 200px;
-	height: 0;
-	padding-top:170px;
-	overflow: hidden;
-	background: url('../img/me_sprite.png') no-repeat;
-	background-position: 0 -170px;
-}
-
-.me_icon:hover {
-	background-position: 0 0px;
-}
-
-.me_icon:active {
-	border-top:solid transparent 3px;
-}
-*/
-
 .content.loading {
 	background: url('../img/ajax-loader.gif') center center no-repeat;
 }
 
-
 hgroup{
 	z-index: 200;
 	cursor:default;
-
-
-	/*background: url('../img/dollabillsyall.png') rgba(0, 0, 0, 0.85);*/
-
-background: rgba(0, 0, 0, 0.85);
-
+	background: rgba(0, 0, 0, 0.85);
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .18);
 
 	-webkit-box-shadow: 0px 15px 35px rgba(50, 50, 50, 0.84);
@@ -106,14 +83,19 @@ background: rgba(0, 0, 0, 0.85);
 	box-shadow:         0px 15px 35px rgba(50, 50, 50, 0.84);
 
 	color: #fff;
-	padding: 40px 100px;
-
+	padding: 5px 100px;
 	border-bottom: solid 1px rgba(255, 255, 255, 0.25);
-
-	background-image: url('../img/standing_guy.png');
+	
+	background-image: url('../img/standing_guys_head.png');
 	background-repeat: no-repeat;
-	background-position: 50% center;
+	background-position: 50% top;
 
+}
+
+.splash hgroup{
+	padding: 40px 100px;
+	background-position: 50% center;
+	background-image: url('../img/standing_guy.png');
 }
 
 h3 {
@@ -138,14 +120,6 @@ h3 {
 	float: left;
 	padding: 50px 0 0 100px;
 }
-
-/*.twitter_button {
-	background: url('../img/sign-in-with-twitter.png') center center no-repeat;
-	width: 333px;
-	height: 100px;
-	display: block;
-	text-indent: -999999px;
-}*/
 
 a:link, a:visited, a:active, a:hover {
 	color: #fff;
@@ -198,11 +172,27 @@ nav ul {
 	padding:0;
 }
 nav li {
-	padding:0 0 0 10px;
+	padding:0;
 	list-style-type:none;
 	display:inline;
 	color: rgba(255, 255, 255, 0.5);
 }
+nav li:before {
+	content: " | ";
+}
+
+nav li.signed_in_as {
+	background-image: url('../img/tweet_icon.png');
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+	padding-right: 25px;
+}
+
+
+nav li:first-child:before {
+	content: "";
+}
+
 nav a:link {
 
 	color: rgba(255, 255, 255, 0.5);
