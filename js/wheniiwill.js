@@ -55,7 +55,7 @@ WhenIIWill = (function() {
 	 */
 	function getMotivations(twitter_name) {
 		if (typeof twitter_name != 'undefined') {
-			console.log("retrieving those motivations for " + twitter_name);
+			//console.log("retrieving those motivations for " + twitter_name);
 
 			$.ajax({
 				url: "db/getPublicMotivations.php",
@@ -95,7 +95,7 @@ WhenIIWill = (function() {
 				data: "motivations=get",
 				success: function(response) {
 					$('.my_motivations').removeClass('loading');
-					console.log(response);
+					//console.log(response);
 					if (response.length == 0) {
 						$('.my_motivations').append($('<p class="no_motivations">You don\'t have any motivations! Start motivating!</p>'));
 					}
@@ -113,10 +113,10 @@ WhenIIWill = (function() {
 
 
 	/**
-	 * Creates and sends the request to the php file to retreive
-	 * XML data from the Flickr api
+	 * Deletes a user's motivation
 	 *
-	 * @param string search_term
+	 * @param string item_to_delete
+	 * @param string motivation_id
 	 *
 	 */
 	function deleteMotivation($item, motivation_id) {
@@ -130,7 +130,7 @@ WhenIIWill = (function() {
 				dataType: 'json',			
 				data: "motivation=delete&motivation_id=" + motivation_id,
 				success: function(response) {
-					console.log(response);
+					//console.log(response);
 					$item.fadeOut('fast');
 				},
 				error: function(response) {
@@ -142,14 +142,12 @@ WhenIIWill = (function() {
 	}	
 
 	/**
-	 * Creates and sends the request to the php file to retreive
-	 * XML data from the Flickr api
+	 * Loads the saerch box
 	 *
-	 * @param string search_term
 	 *
 	 */
 	function loadSearch() {
-		console.log("loading search box");
+		//console.log("loading search box");
 
 		$('body').append($('<div class="search_window_cover"></div>'));
 		$('body').append($('<div class="search_window"></div>'));
@@ -181,13 +179,22 @@ WhenIIWill = (function() {
 		});				
 	}	
 
+	/**
+	 * remove search box
+	 *
+	 */
 	function closeSearch() {
-		console.log("closing those windows");
+		//console.log("closing those windows");
 
 		$('.search_window').remove();
 		$('.search_window_cover').remove();
 	}
 
+
+	/**
+	 * Send request for a search
+	 *
+	 */
 	function performSearch() {
 		//show the search box so you don't think nothing's happening
 		$('.search_window .search_loading').show();
@@ -213,9 +220,14 @@ WhenIIWill = (function() {
 		}
 	}
 
+
+	/**
+	 * Add content to the serach rsults box
+	 *
+	 */
 	function populateSearchResultsBox(response) {
-		console.log("search_results");
-		console.log(response);
+		//console.log("search_results");
+		//console.log(response);
 		$('.search_window .search_loading').hide();
 		$('.search_results').html("");
 
@@ -247,8 +259,8 @@ WhenIIWill = (function() {
 
 	function submitMotivation() {
 		if (valid_to_save == true) {
-			console.log($(".motivation_milestone").val() + " " + $selected_item.attr("data-url") + " " + $selected_item.attr("data-id") + " " + $selected_item.children("p").html());
-			console.log($(".motivation_milestone").val() + " " + selected_item_url + " " + selected_item_id + " " + selected_item_name + " " + selected_item_img_url);
+			//console.log($(".motivation_milestone").val() + " " + $selected_item.attr("data-url") + " " + $selected_item.attr("data-id") + " " + $selected_item.children("p").html());
+			//console.log($(".motivation_milestone").val() + " " + selected_item_url + " " + selected_item_id + " " + selected_item_name + " " + selected_item_img_url);
 
 			$('.add_new_motivation_submit').addClass('disabled').addClass('loading');
 
@@ -278,7 +290,7 @@ WhenIIWill = (function() {
 	function useSelectedItem($item) {
 		$selected_item = $item;
 		closeSearch();
-		console.log($selected_item);
+		//console.log($selected_item);
 
 		selected_item_url = $selected_item.attr("data-url");
 		selected_item_id = $selected_item.attr("data-id");
@@ -292,26 +304,26 @@ WhenIIWill = (function() {
 	}
 
 	function checkIfValid() {
-		console.log("checking");
+		//console.log("checking");
 
 		if ($selected_item != "" && $(".motivation_milestone").val() != "") {
 			valid_to_save = true;
 
 			$('.add_new_motivation_submit').removeClass('disabled');
-			console.log("yep");
+			//console.log("yep");
 		}
 		else {
 			valid_to_save = false;
 			$('.add_new_motivation_submit').addClass('disabled');
-			console.log("nope");
+			//console.log("nope");
 		}
 
 	}
 
 	function repositionSearchBox() {
-		console.log("okay but I need to check first");
+		//console.log("okay but I need to check first");
 		if ($('.search_window').length > 0) {
-			console.log("do it");
+			//console.log("do it");
 
 			var win_width = $(window).width();
 			var win_height = $(window).height();
