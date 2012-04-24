@@ -1,8 +1,11 @@
 <?php
 
+header('Content-Type: application/json');
 
 require_once('./settings.php');
 require_once('./lib/AmazonECS.class.php');
+
+
 
 if (isset($_POST['search_term']))
 {
@@ -27,7 +30,7 @@ if (isset($_POST['search_term']))
 		//$response = $amazonEcs->country('com')->search('MySql');
 		$response = $amazonEcs->category('All')->responseGroup('Small,Images')->search($search_term);
 		
-		header('Content-Type: application/json');
+		
 		echo json_encode($response);
 	}
 	catch(Exception $e)

@@ -53,28 +53,62 @@ WhenIIWill = (function() {
 	 * @param string search_term
 	 *
 	 */
-	function getUserMotivations(user_id) {
-		console.log("retrieving those motivations");
+	function getMotivations(twitter_name) {
+		if (typeof twitter_name != 'undefined') {
+			console.log("retrieving those motivations for " + twitter_name);
 
-		$.ajax({
-			url: "db/getMotivations.php",
-			type: 'post',
-			dataType: 'json',			
-			data: "motivations=get",
-			success: function(response) {
-				$('.my_motivations').removeClass('loading');
-				console.log(response);
-				if (response.length == 0) {
-					$('.my_motivations').append($('<p class="no_motivations">You don\'t have any motivations! Start motivating!</p>'));
+			$.ajax({
+				url: "db/getPublicMotivations.php",
+				type: 'post',
+				dataType: 'json',			
+				data: "motivations=get&twitter_user=" + twitter_name,
+				success: function(response) {
+					$('.my_motivations').removeClass('loading');
+					if (response == '404') {
+						$('h3').html("Not found!");
+						$('.my_motivations').append($("<p>That user doesn't exist here! Move along!</p>"));
+					}
+					else { 
+						if (response.motivations.length == 0) {
+							$('.my_motivations').append($('<p class="no_motivations">' + response.user_name + ' doesn\'t have any motivations yet!</p>'));
+						}
+						
+						$('h3').html(response.user_name + "'s Motivations");
+						
+						for (i in response.motivations) {
+							$('.my_motivations').append('<div class="motivation"><strong>When I finally ' + response.motivations[i].milestone + ', I will buy myself <a href="' + response.motivations[i].item_url + ' target="_blank">' + response.motivations[i].item_name + '</a></strong></div>');
+						}
+					}
+				},
+				error: function(response) {
+					alert('Hey, something went wrong.\n' + response.responseText);
 				}
-				for (i in response) {
-					$('.my_motivations').append('<div class="motivation"><strong>When I finally ' + response[i].milestone + ', I will buy myself <a href="' + response[i].item_url + ' target="_blank">' + response[i].item_name + '</a></strong><a class="delete" href="#" data-id="' + response[i].motivation_id + '">delete</a></div>');
+			});	
+
+		}
+		else {
+
+			$.ajax({
+				url: "db/getMotivations.php",
+				type: 'post',
+				dataType: 'json',			
+				data: "motivations=get",
+				success: function(response) {
+					$('.my_motivations').removeClass('loading');
+					console.log(response);
+					if (response.length == 0) {
+						$('.my_motivations').append($('<p class="no_motivations">You don\'t have any motivations! Start motivating!</p>'));
+					}
+					for (i in response) {
+						$('.my_motivations').append('<div class="motivation"><strong>When I finally ' + response[i].milestone + ', I will buy myself <a href="' + response[i].item_url + ' target="_blank">' + response[i].item_name + '</a></strong><a class="delete" href="#" data-id="' + response[i].motivation_id + '">delete</a></div>');
+					}
+				},
+				error: function(response) {
+					alert('Hey, something went wrong.\n' + response.responseText);
 				}
-			},
-			error: function(response) {
-				alert('Hey, something went wrong.\n' + response.responseText);
-			}
-		});	
+			});	
+
+		}
 	}
 
 
@@ -293,7 +327,7 @@ WhenIIWill = (function() {
 
 	return {
 		init: init,
-		getMotivations: getUserMotivations,
+		getMotivations: getMotivations,
 		loadSearch: loadSearch,
 		closeSearch: closeSearch,
 		submitMotivation: submitMotivation,
@@ -308,6 +342,10 @@ $(document).ready(function() {
 
 	if ($('body').hasClass('profile')) {
 		WhenIIWill.getMotivations();
+	}
+
+	if ($('body').hasClass('public_profile')) {
+		WhenIIWill.getMotivations($('body').attr('id'));
 	}
 
 	$('.item_lookup').click( function(e) {

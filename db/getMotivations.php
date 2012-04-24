@@ -59,6 +59,8 @@ function getMotivations($twitter_id) {
 		}
 	}
 
+	header('Content-Type: application/json');
+
 	return json_encode($motivations);
 
 	
