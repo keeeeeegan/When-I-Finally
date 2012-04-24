@@ -91,7 +91,7 @@ WhenIIWill = (function() {
 		//show the search box so you don't think nothing's happening
 		$('.search_window .search_loading').show();
 				
-		search_term = $('.search_window .search_loading').val();
+		search_term = $('.search_window .search_box').val();
 
 		if (search_searching != true) {
 			search_searching = true;
@@ -112,10 +112,38 @@ WhenIIWill = (function() {
 		}
 	}
 
-	function populateSearchResultsBox(json) {
+	function populateSearchResultsBox(response) {
 		console.log("search_results");
-		console.log(json);
+		console.log(response);
 		$('.search_window .search_loading').hide();
+		$('.search_results').html("");
+
+		var items = response.Items.Item;
+
+		for (i in items) {
+			var item_name = items[i].ItemAttributes.Title;
+			var item_url = items[i].DetailPageURL;
+			var item_id = items[i].ASIN;
+			var item_img_url = items[i].SmallImage.URL;
+			
+			var $item = $('<div data-url="' + item_url + '" data-id="' + item_id + '"><img src="' + item_img_url + '" /><p>' + item_name + '</p></div>');
+			
+			$('.search_results').append($item);
+
+			$item.click(function() {
+				//useSelectedItem({"id":,"url":,"img_url":,"name": });
+				useSelectedItem($(this));
+			});
+		}
+		
+	}
+
+	function useSelectedItem($item) {
+		closeSearch();
+		console.log($item);
+
+		$(".item_lookup").after($('<a href="'+ $item.attr("data-url") +'" target="_blank">'+ $item.children("p").html() +'</a>'));
+		$(".item_lookup").remove();
 	}
 
 	function repositionSearchBox() {
@@ -152,6 +180,12 @@ $(document).ready(function() {
 		WhenIIWill.getMotivations();
 	}
 
+	$('.item_lookup').click( function(e) {
+		e.preventDefault();
+
+		WhenIIWill.loadSearch();
+	});
+	
 	$('.item_lookup').click( function(e) {
 		e.preventDefault();
 
