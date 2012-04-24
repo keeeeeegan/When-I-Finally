@@ -105,6 +105,25 @@ h3 {
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .70);
 }
 
+.my_motivations .motivation {
+	margin: 15px 0 30px 0;
+}
+.my_motivations .motivation strong {
+	font-size: 20px;
+	white-space: nowrap;
+}
+
+.my_motivations .motivation a.delete {
+	margin-left: 15px;
+	text-decoration:none;
+
+}
+
+.my_motivations .motivation a.delete:hover {
+	color: red;
+
+}
+
 .twitter_avatar {
 	
 }
@@ -137,6 +156,7 @@ h3 {
 .my_motivations {
 	display:block;
 	padding-top: 10px;
+	min-height: 150px;
 }
 
 .no_motivations {
@@ -151,6 +171,7 @@ h3 {
 	font-size: 30px;
 	padding-top: 50px;
 	padding-bottom: 50px;
+	white-space: nowrap;
 }
 
 .new_motivation input {
@@ -229,6 +250,21 @@ a.button.twitter_button {
 	width: 350px;
 }
 
+a.button.disabled {
+	background: #ccc;
+	cursor: default;
+	border: solid #333 1px;
+}
+
+a.button.disabled.loading {
+	background-image: url('../img/loader.gif') center 100% no-repeat;
+	padding-right: 20px;
+}
+
+a.button.disabled:hover {
+	border: solid #000 1px;
+}
+
 nav {
 	position: absolute;
 	top: 5px;
@@ -294,10 +330,11 @@ footer {
 	color: #333;
 }
 
-.search_window close {
+.search_window a.close {
 	position: absolute;
-	top:0;
-	right:0;
+	top: 2px;
+	right: 7px;
+	color: #000;
 }
 
 .search_window .search_box {

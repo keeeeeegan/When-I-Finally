@@ -45,7 +45,7 @@ if (isset($_SESSION) && isset($_SESSION["status"]) && $_SESSION["status"] == "ve
 </div>
 
 <footer>
-	<p>Copyright &copy; 2012 &ndash; <a href="#">keeg.me</a></p>
+	<p>Copyright &copy; 2012 &ndash; <a href="http://keeg.me">keeg.me</a></p>
 </footer>
 
 </body>

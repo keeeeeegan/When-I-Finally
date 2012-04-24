@@ -9,7 +9,7 @@ function getLocalUser($twitter_id, $nicename, $twitter_name) {
 	$result = mysql_query("SELECT * FROM users") or die(mysql_error());
 
 	$twitter_ids = array();
-
+	$userid = 0;
 	$registered = 0;
 
 	while ($row = mysql_fetch_array($result)) {

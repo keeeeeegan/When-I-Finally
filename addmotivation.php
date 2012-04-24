@@ -60,11 +60,11 @@ $local_user = getLocalUser($content->id, $content->name, $content->screen_name);
 	<h3>Add new Motivation</h3>
 
 	<div class="new_motivation">
-	When I finally <input type="text" value="" name="motivation_when" /><!--<a class="help" data-helptext="examples go here">?</a>-->, 
+	When I finally <input type="text" value="" name="motivation_when" class="motivation_milestone" /><!--<a class="help" data-helptext="examples go here">?</a>-->, 
 	I will buy myself <a href="#" class="item_lookup">lookup item</a>
 	</div>
 
-	<a href="#" class="button">Add new Motivation</a>
+	<a href="#" class="button add_new_motivation_submit disabled">Add new Motivation</a>
 
 </div>
 
@@ -73,7 +73,7 @@ $local_user = getLocalUser($content->id, $content->name, $content->screen_name);
 </div>-->
 
 <footer>
-	<p>Copyright &copy; 2012 &ndash; <a href="#">keeg.me</a></p>
+	<p>Copyright &copy; 2012 &ndash; <a href="http://keeg.me">keeg.me</a></p>
 </footer>
 
 </body>

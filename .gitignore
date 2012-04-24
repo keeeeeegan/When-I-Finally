@@ -7,3 +7,4 @@ Thumbs.db
 *.
 db/connectdb.php
 twitteroauth/config.php
+amazon/settings.php

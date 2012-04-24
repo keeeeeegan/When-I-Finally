@@ -16,6 +16,14 @@ WhenIIWill = (function() {
 
 	var search_term;
 	var search_searching;
+	var valid_to_save;
+	var $selected_item = "";
+	var sending_motivation;
+
+	var selected_item_url;
+	var selected_item_img_url;
+	var selected_item_id;
+	var selected_item_name;
 	
 	/**
 	 * Display and hide page elements as necessary
@@ -29,6 +37,12 @@ WhenIIWill = (function() {
 			repositionSearchBox();
 		});		
 
+		$(".motivation_milestone").keypress(function(e) {
+			checkIfValid();
+		});	
+
+		valid_to_save = false;
+		sending_motivation = false;
 		
 	}
 
@@ -42,9 +56,56 @@ WhenIIWill = (function() {
 	function getUserMotivations(user_id) {
 		console.log("retrieving those motivations");
 
-		$('.my_motivations').removeClass('loading');
-		$('.my_motivations').append($('<p class="no_motivations">You don\'t have any motivations! Start motivating!</p>'));
+		$.ajax({
+			url: "db/getMotivations.php",
+			type: 'post',
+			dataType: 'json',			
+			data: "motivations=get",
+			success: function(response) {
+				$('.my_motivations').removeClass('loading');
+				console.log(response);
+				if (response.length == 0) {
+					$('.my_motivations').append($('<p class="no_motivations">You don\'t have any motivations! Start motivating!</p>'));
+				}
+				for (i in response) {
+					$('.my_motivations').append('<div class="motivation"><strong>When I finally ' + response[i].milestone + ', I will buy myself <a href="' + response[i].item_url + ' target="_blank">' + response[i].item_name + '</a></strong><a class="delete" href="#" data-id="' + response[i].motivation_id + '">delete</a></div>');
+				}
+			},
+			error: function(response) {
+				alert('Hey, something went wrong.\n' + response.responseText);
+			}
+		});	
 	}
+
+
+	/**
+	 * Creates and sends the request to the php file to retreive
+	 * XML data from the Flickr api
+	 *
+	 * @param string search_term
+	 *
+	 */
+	function deleteMotivation($item, motivation_id) {
+
+		var sure = confirm("Woah, are you sure you want to delete this motivation!?");
+
+		if (sure == true) {
+			$.ajax({
+				url: "db/deleteMotivation.php",
+				type: 'post',
+				dataType: 'json',			
+				data: "motivation=delete&motivation_id=" + motivation_id,
+				success: function(response) {
+					console.log(response);
+					$item.fadeOut('fast');
+				},
+				error: function(response) {
+					alert('Hey, something went wrong.\n' + response.responseText);
+				}
+			});	
+
+		}
+	}	
 
 	/**
 	 * Creates and sends the request to the php file to retreive
@@ -78,6 +139,12 @@ WhenIIWill = (function() {
 			e.preventDefault();
 			WhenIIWill.closeSearch();
 		});		
+		// setup listeners for closing the window
+		$('.close').live('click', function(e) {
+			
+			e.preventDefault();
+			WhenIIWill.closeSearch();
+		});				
 	}	
 
 	function closeSearch() {
@@ -124,8 +191,14 @@ WhenIIWill = (function() {
 			var item_name = items[i].ItemAttributes.Title;
 			var item_url = items[i].DetailPageURL;
 			var item_id = items[i].ASIN;
-			var item_img_url = items[i].SmallImage.URL;
-			
+			var item_img_url = "img/no-product-img-amazon-logo.png";
+
+			if (typeof items[i].SmallImage != 'undefined') {
+				if (typeof items[i].SmallImage.URL != 'undefined') {
+					item_img_url = items[i].SmallImage.URL;
+				}
+			}
+
 			var $item = $('<div data-url="' + item_url + '" data-id="' + item_id + '"><img src="' + item_img_url + '" /><p>' + item_name + '</p></div>');
 			
 			$('.search_results').append($item);
@@ -138,12 +211,67 @@ WhenIIWill = (function() {
 		
 	}
 
-	function useSelectedItem($item) {
-		closeSearch();
-		console.log($item);
+	function submitMotivation() {
+		if (valid_to_save == true) {
+			console.log($(".motivation_milestone").val() + " " + $selected_item.attr("data-url") + " " + $selected_item.attr("data-id") + " " + $selected_item.children("p").html());
+			console.log($(".motivation_milestone").val() + " " + selected_item_url + " " + selected_item_id + " " + selected_item_name + " " + selected_item_img_url);
 
-		$(".item_lookup").after($('<a href="'+ $item.attr("data-url") +'" target="_blank">'+ $item.children("p").html() +'</a>'));
+			$('.add_new_motivation_submit').addClass('disabled').addClass('loading');
+
+			if (sending_motivation != true) {
+				sending_motivation = true;
+
+				$.ajax({
+					url: "db/saveItem.php",
+					type: 'post',
+					dataType: 'text',			
+					data: "milestone=" + $(".motivation_milestone").val() + "&item_url=" + selected_item_url + "&item_img_url=" + selected_item_img_url + "&item_id=" + selected_item_id + "&item_name=" + selected_item_name,
+					success: function(response) {
+						$('.description').slideUp('fast', function() {
+							$('.description').html('<h3>Motivation Saved!</h3><p><a href="profile.php">Go to your motivations!</a></p>');
+							$('.description').slideDown('fast');
+						});			
+					},
+					error: function(response) {
+						alert('Hey, something went wrong.\n' + response.responseText);
+						sending_motivation = false;
+					}
+				});
+			}
+		}
+	}
+
+	function useSelectedItem($item) {
+		$selected_item = $item;
+		closeSearch();
+		console.log($selected_item);
+
+		selected_item_url = $selected_item.attr("data-url");
+		selected_item_id = $selected_item.attr("data-id");
+		selected_item_img_url = $selected_item.children("img").attr("src");
+		selected_item_name = $selected_item.children("p").html();
+
+		$(".item_lookup").after($('<a href="'+ selected_item_url +'" target="_blank">'+ selected_item_name +'</a>'));
 		$(".item_lookup").remove();
+
+		checkIfValid();
+	}
+
+	function checkIfValid() {
+		console.log("checking");
+
+		if ($selected_item != "" && $(".motivation_milestone").val() != "") {
+			valid_to_save = true;
+
+			$('.add_new_motivation_submit').removeClass('disabled');
+			console.log("yep");
+		}
+		else {
+			valid_to_save = false;
+			$('.add_new_motivation_submit').addClass('disabled');
+			console.log("nope");
+		}
+
 	}
 
 	function repositionSearchBox() {
@@ -167,7 +295,9 @@ WhenIIWill = (function() {
 		init: init,
 		getMotivations: getUserMotivations,
 		loadSearch: loadSearch,
-		closeSearch: closeSearch
+		closeSearch: closeSearch,
+		submitMotivation: submitMotivation,
+		deleteMotivation: deleteMotivation
 	};
 
 }());
@@ -185,11 +315,18 @@ $(document).ready(function() {
 
 		WhenIIWill.loadSearch();
 	});
-	
-	$('.item_lookup').click( function(e) {
+
+	$('.add_new_motivation_submit').click( function(e) {
 		e.preventDefault();
 
-		WhenIIWill.loadSearch();
+		WhenIIWill.submitMotivation();
 	});
+
+	$('.delete').live('click', function(e) {
+		e.preventDefault();
+
+
+		WhenIIWill.deleteMotivation($(this).parent(), $(this).attr('data-id'));
+	});	
 
 });

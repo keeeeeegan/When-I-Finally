@@ -72,7 +72,7 @@ $local_user = getLocalUser($content->id, $content->name, $content->screen_name);
 </div>-->
 
 <footer>
-	<p>Copyright &copy; 2012 &ndash; <a href="#">keeg.me</a></p>
+	<p>Copyright &copy; 2012 &ndash; <a href="http://keeg.me">keeg.me</a></p>
 </footer>
 
 </body>

@@ -59,15 +59,14 @@ $local_user = getLocalUser($content->id, $content->name, $content->screen_name);
 
 	<h3>You are logged in!</h3>
 
-	<p>Donec quis dui eget arcu fringilla accumsan et a ligula. Sed quis lectus ac neque fermentum rutrum sagittis quis dolor. Aenean sagittis sapien non sapien porta vehicula pulvinar augue aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id ligula eu purus adipiscing pharetra. Vivamus interdum ornare felis, eu sollicitudin massa scelerisque vitae. Nunc molestie, ipsum ut lacinia tempus, neque lacus interdum enim, quis mattis diam ipsum id metus. Maecenas dignissim erat ac sem gravida malesuada. Donec tempor semper odio a pellentesque.</p>
+	<p>Congratulations, you are now logged in using your twitter account.</p>
 
-	<h3>How do I sign up?</h3>
+	<p>Why not check out <a href="profile.php">your profile</a>?</p>
 
-	<p>Sed facilisis blandit ipsum, vitae tempor velit posuere vitae. Fusce vel nulla id neque aliquam elementum ut vel turpis. Aliquam non dui vehicula diam ultricies malesuada a in purus. Suspendisse quis nisl et diam blandit scelerisque. Mauris vehicula malesuada lorem, quis rhoncus justo elementum non. Integer sollicitudin porttitor erat eget congue. Mauris in nulla magna. Mauris at nisi nibh, ut tempus lectus. Maecenas vestibulum convallis nisi, sit amet lobortis tortor fermentum at. Aliquam a orci lacus. Duis accumsan vehicula leo, ut elementum nibh ultricies vitae.</p>
-
-	<pre>
+	<?php /*<pre>
     	<?php print_r($content); ?>
     </pre>
+    */ ?>
 
 </div>
 
@@ -76,7 +75,7 @@ $local_user = getLocalUser($content->id, $content->name, $content->screen_name);
 </div>-->
 
 <footer>
-	<p>Copyright &copy; 2012 &ndash; <a href="#">keeg.me</a></p>
+	<p>Copyright &copy; 2012 &ndash; <a href="http://keeg.me">keeg.me</a></p>
 </footer>
 
 </body>
