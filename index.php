@@ -24,7 +24,7 @@ if (isset($_SESSION) && isset($_SESSION["status"]) && $_SESSION["status"] == "ve
 <body class="splash">
 
 <hgroup>
-	<h1>When I, I Will...</h1>
+	<h1>When I Finally...</h1>
 	<h2>Motivation through consumerism!</h2>
 </hgroup>
 
@@ -32,7 +32,7 @@ if (isset($_SESSION) && isset($_SESSION["status"]) && $_SESSION["status"] == "ve
 
 	<h3>What is this?</h3>
 
-	<p>Everyone has one or two goals in mind. Some just think about the gratification they'll feel at the end to keep them motivated. That's all fine and dandy, but if you're like the most of us, you'd like a little reward when you've finally accomplished something. That's what this site is for, as <em>motivation through consumerism</em> is our motto here. Attach an item you've really been wanting to that goal you've really been needing to accomplish. It might just keep you motivated.</p>
+	<p>Everyone has one or two goals in mind. Some just think about the gratification they'll feel at the end to keep them motivated. That's all fine and dandy, but if you're like the rest of us, you'd like a little reward when you've finally accomplished something. That's what this site is for, as <em>motivation through consumerism</em> is our motto here. Attach an item you've really been wanting to that goal you've really been needing to accomplish. It might just keep you motivated.</p>
 
 	<h3>How do I sign up?</h3>
 

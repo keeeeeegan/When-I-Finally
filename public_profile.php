@@ -45,7 +45,7 @@ if (!isset($local_user) || $local_user != false) {
 <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="js/wheniiwill.js"></script>
+<script type="text/javascript" src="js/motivations.js"></script>
 
 </head>
 
@@ -69,7 +69,7 @@ if (isset($_GET["user"])) {
 </nav>
 
 <hgroup>
-	<h1>When I, I Will...</h1>
+	<h1>When I Finally...</h1>
 	<h2>Motivation through consumerism!</h2>
 </hgroup>
 

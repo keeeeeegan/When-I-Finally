@@ -51,7 +51,7 @@ $local_user = getLocalUser($content->id, $content->name, $content->screen_name);
 </nav>
 
 <hgroup>
-	<h1>When I, I Will...</h1>
+	<h1>When I Finally...</h1>
 	<h2>Motivation through consumerism!</h2>
 </hgroup>
 
