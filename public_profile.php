@@ -46,7 +46,18 @@ if (!isset($local_user) || $local_user != false) {
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="js/wheniiwill.js"></script>
+	<!-- Google Analytics -->
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26787049-1']);
+		_gaq.push(['_trackPageview']);
 
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 </head>
 
 <body class="public_profile"<?php
@@ -69,7 +80,7 @@ if (isset($_GET["user"])) {
 </nav>
 
 <hgroup>
-	<h1>When I, I Will...</h1>
+	<h1>When I Finally...</h1>
 	<h2>Motivation through consumerism!</h2>
 </hgroup>
 

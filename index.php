@@ -18,13 +18,24 @@ if (isset($_SESSION) && isset($_SESSION["status"]) && $_SESSION["status"] == "ve
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="js/wheniiwill.js"></script>
+	<!-- Google Analytics -->
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-26787049-1']);
+		_gaq.push(['_trackPageview']);
 
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 </head>
 
 <body class="splash">
 
 <hgroup>
-	<h1>When I, I Will...</h1>
+	<h1>When I Finally...</h1>
 	<h2>Motivation through consumerism!</h2>
 </hgroup>
 
@@ -32,7 +43,7 @@ if (isset($_SESSION) && isset($_SESSION["status"]) && $_SESSION["status"] == "ve
 
 	<h3>What is this?</h3>
 
-	<p>Everyone has one or two goals in mind. Some just think about the gratification they'll feel at the end to keep them motivated. That's all fine and dandy, but if you're like the most of us, you'd like a little reward when you've finally accomplished something. That's what this site is for, as <em>motivation through consumerism</em> is our motto here. Attach an item you've really been wanting to that goal you've really been needing to accomplish. It might just keep you motivated.</p>
+	<p>Everyone has one or two goals in mind. Some just think about the gratification they'll feel at the end to keep them motivated. That's all fine and dandy, but if you're like the rest of us, you'd like a little reward when you've finally accomplished something. That's what this site is for, as <em>motivation through consumerism</em> is our motto here. Attach an item you've really been wanting to that goal you've really been needing to accomplish. It might just keep you motivated.</p>
 
 	<h3>How do I sign up?</h3>
 

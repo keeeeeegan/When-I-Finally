@@ -1,6 +1,6 @@
 <?php
 
-require_once('connectdb.php');
+require_once('connectdb.php'); 
 
 // retrieve the user from the database, or register them if they have not been
 // added previously
