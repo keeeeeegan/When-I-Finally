@@ -1,18 +1,19 @@
 /**
- * When I, I will...
+ * When I Finally... Motivations
  *
  * @version 	1.0
  * @author 		Keegan Berry
  * @since		04/017/12
+ * @updated		11/20/12
  *
  */
 
-if(!window.WhenIIWill)
+if(!window.Motivations)
 {
-	window.WhenIIWill = {};
+	window.Motivations = {};
 }
 
-WhenIIWill = (function() {
+Motivations = (function() {
 
 	var search_term;
 	var search_searching;
@@ -169,13 +170,13 @@ WhenIIWill = (function() {
 		// setup listeners for closing the window
 		$('.search_window_cover').click( function(e) {
 			e.preventDefault();
-			WhenIIWill.closeSearch();
+			Motivations.closeSearch();
 		});		
 		// setup listeners for closing the window
 		$('.close').on('click', function(e) {
 			
 			e.preventDefault();
-			WhenIIWill.closeSearch();
+			Motivations.closeSearch();
 		});				
 	}	
 
@@ -350,33 +351,33 @@ WhenIIWill = (function() {
 
 $(document).ready(function() {
 
-	WhenIIWill.init();
+	Motivations.init();
 
 	if ($('body').hasClass('profile')) {
-		WhenIIWill.getMotivations();
+		Motivations.getMotivations();
 	}
 
 	if ($('body').hasClass('public_profile')) {
-		WhenIIWill.getMotivations($('body').attr('id'));
+		Motivations.getMotivations($('body').attr('id'));
 	}
 
 	$('.item_lookup').click( function(e) {
 		e.preventDefault();
 
-		WhenIIWill.loadSearch();
+		Motivations.loadSearch();
 	});
 
 	$('.add_new_motivation_submit').click( function(e) {
 		e.preventDefault();
 
-		WhenIIWill.submitMotivation();
+		Motivations.submitMotivation();
 	});
 
 	$('.delete').on('click', function(e) {
 		e.preventDefault();
 
 
-		WhenIIWill.deleteMotivation($(this).parent(), $(this).attr('data-id'));
+		Motivations.deleteMotivation($(this).parent(), $(this).attr('data-id'));
 	});	
 
 });

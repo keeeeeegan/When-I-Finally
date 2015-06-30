@@ -23,7 +23,7 @@ else {
 	$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
 
 	/* If method is set change API call made. Test is called by default. */
-	$content = $connection->get('account/verify_credentials');	
+	$content = $connection->get('account/verify_credentials');
 }
 
 
@@ -36,16 +36,15 @@ if (!isset($local_user) || $local_user != false) {
 
 ?>
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html dir="ltr" lang="en-US">
- 
+
 <head>
 <meta charset="utf-8" />
 <title></title>
 <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="js/wheniiwill.js"></script>
 	<!-- Google Analytics -->
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -58,6 +57,8 @@ if (!isset($local_user) || $local_user != false) {
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 	</script>
+<script type="text/javascript" src="js/motivations.js"></script>
+
 </head>
 
 <body class="public_profile"<?php
